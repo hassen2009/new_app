@@ -5,7 +5,9 @@ class UserModel{
   String createdAt;
   String phoneNumber;
   String uid;
-
+  String role;
+  String role2;
+  String typel;
 
   UserModel({
     required this.name,
@@ -14,6 +16,10 @@ class UserModel{
     required this.createdAt,
     required this.phoneNumber,
     required this.uid,
+    required this.role,
+    required this.role2,
+    required this.typel
+
       }
       );
   factory UserModel.fromMap(Map<String,dynamic>map){
@@ -24,6 +30,9 @@ class UserModel{
         createdAt: map["createdAt"]?? "",
         phoneNumber:map["phoneNumber"] ??"",
       uid: map["uid"]?? "",
+      role: map['role']??"",
+      role2: map["role2"]??"",
+      typel: map["typel"]??""
     );
   }
   Map<String,dynamic> toMap(){
@@ -34,6 +43,9 @@ class UserModel{
      "createdAt":createdAt,
      "phoneNumber":phoneNumber,
       "uid":uid,
+      "role":role,
+      "role2":role2,
+      "typel":typel
     };
   }
 }

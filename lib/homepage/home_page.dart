@@ -1,8 +1,12 @@
+import 'dart:ui';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:new_app/barpages/welcomescreen.dart';
 import 'package:new_app/homepage/authentification.dart';
+import 'package:new_app/homepage/models/notifications.dart';
+import 'package:new_app/homepage/stry.dart';
 import 'package:provider/provider.dart';
 import '../empl/services.dart';
 import '../barpages/rattrapage.dart';
@@ -18,6 +22,15 @@ class HomePge extends StatefulWidget {
 }
 
 class _HomePgeState extends State<HomePge> {
+  var notifyHelper;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    notifyHelper=NotifyHelper();
+    notifyHelper.initializeNotification();
+    notifyHelper.requestIOSPermissions();
+  }
   int _currentIndex = 0;
   setCurrentIndex(int index){
     setState(() {
@@ -28,7 +41,17 @@ class _HomePgeState extends State<HomePge> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      extendBodyBehindAppBar: true,
+      extendBody: true,
+
       appBar: AppBar(
+        flexibleSpace: ClipRect(child: BackdropFilter(filter: ImageFilter.blur(sigmaX: 25,sigmaY: 25),
+        child: Container(
+          color: Colors.transparent,
+        ),
+        ),),
+        elevation: 0,
+        backgroundColor: Get.isDarkMode?Colors.black.withAlpha(1000):Colors.white.withAlpha(2000),
        actions: [
          GestureDetector(
            onTap: (){
@@ -42,18 +65,23 @@ class _HomePgeState extends State<HomePge> {
              ),
            ) ,
          ),
+
        ],
       ),
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       body:
       [
       SingleChildScrollView(
       child: Stack(
       children: [
         Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-        const HeaderSection(),
-    const SearchSection(),
+          HeaderSection(),
+    Container(height: 4,color: Get.isDarkMode?Colors.grey[900]:Colors.grey[300],),
+    stry(),
+          Container(height: 4,color: Get.isDarkMode?Colors.grey[900]:Colors.grey[300],),
     CatagorySection(),
     ],
     ),
@@ -67,72 +95,63 @@ class _HomePgeState extends State<HomePge> {
   }
 
   NavigationBar() {
-    return Container(
-      child: Container(
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-                color: Colors.grey.withOpacity(0.1),
-                spreadRadius:5,
-                blurRadius: 0),
-          ],
-        ),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
+    return ClipRect(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: BottomNavigationBar(
+              backgroundColor: Get.isDarkMode?Colors.black.withAlpha(1000):Colors.white.withAlpha(1000),
+              currentIndex: _currentIndex,
+              onTap: (index) => setCurrentIndex(index),
+              elevation: 0,
+              selectedFontSize: 12,
+              unselectedFontSize: 12,
+              unselectedItemColor: Get.isDarkMode?Colors.grey[300]:Colors.grey[800],
+              type: BottomNavigationBarType.fixed,
+              items: [
+                BottomNavigationBarItem(
+                  label: "Accueil",
+                  icon: Padding(
+                    padding: const EdgeInsets.all(6),
+                    child: Icon(_currentIndex==0?
+                    Icons.home:Icons.home_outlined,
+                      size: 30,
+                    ),
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  label: "Emploi",
+                  icon: Container(
+                    margin: const EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child:  Icon(_currentIndex==1?
+                    Icons.task:Icons.task_outlined,
+                      size: 25,
+                    ),
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  label: "A rattraper",
+                  icon: Container(
+                    margin: const EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child:  Icon(
+                      _currentIndex==2?
+                      Icons.assignment:Icons.assignment_outlined,
+                      size: 25,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-          child: BottomNavigationBar(
-            currentIndex: _currentIndex,
-            onTap: (index) => setCurrentIndex(index),
-            elevation: 10,
-            selectedFontSize: 12,
-            unselectedFontSize: 12,
-            unselectedItemColor: Colors.grey.withOpacity(0.7),
-            type: BottomNavigationBarType.fixed,
-            items: [
-              BottomNavigationBarItem(
-                label: "Accueil",
-                icon: Icon(_currentIndex==0?
-                Icons.home_filled:Icons.home_filled,
-                  size: 30,
-                ),
-              ),
-              BottomNavigationBarItem(
-                label: "Emploi",
-                icon: Container(
-                  margin: const EdgeInsets.all(5),
-                  padding: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child:  Icon(_currentIndex==1?
-                  Icons.table_rows_rounded:Icons.table_rows_outlined,
-                    size: 25,
-                  ),
-                ),
-              ),
-              BottomNavigationBarItem(
-                label: "A rattraper",
-                icon: Container(
-                  margin: const EdgeInsets.all(5),
-                  padding: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child:  Icon(
-                    _currentIndex==2?
-                    Icons.assignment:Icons.assignment_outlined,
-                    size: 25,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }
@@ -143,7 +162,7 @@ const  MyDrawer ({super.key});
   Widget build(BuildContext context){
    final ap = Provider.of<Authprovider>(context,listen:false);
    return Drawer(
-   backgroundColor: Get.isDarkMode?Colors.grey[900]:Colors.grey[300],
+   backgroundColor: Get.isDarkMode?CupertinoColors.darkBackgroundGray:Colors.white,
      child: SingleChildScrollView(
 
          child: Column(
@@ -154,16 +173,19 @@ const  MyDrawer ({super.key});
                radius: 50,
              ),),
 
-             Text(ap.userModel.name,style: TextStyle(
-               fontSize: 28,
-               fontWeight: FontWeight.w600,
-               color: Get.isDarkMode?Colors.white:Colors.black,
-             ),),
+             Padding(
+               padding: const EdgeInsets.only(right: 8.0,left: 8.0,bottom: 10),
+               child: Text(ap.userModel.name,style: TextStyle(
+                 fontSize: 20,
+                 fontWeight: FontWeight.w600,
+                 color: Get.isDarkMode?Colors.white:Colors.black,
+               ),textAlign: TextAlign.center,),
+             ),
              Text(ap.userModel.bio,style: TextStyle(
                fontSize: 18,
                color: Get.isDarkMode?Colors.white:Colors.black,
              ),),
-            Mylisttile(icon: Icons.logout_sharp, text: "Déconnexion", onTap: ()async { await ap.userSignOut().then((value) => Get.to(()=>welcomescreen())); },),
+            Mylisttile(icon: Icons.logout_sharp, text: "Déconnexion", onTap: ()async { await ap.userSignOut().then((value) => Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx)=>welcomescreen()), (route) => false)); },),
            ],
          )),
    );

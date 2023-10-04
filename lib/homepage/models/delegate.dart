@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'Centrales.dart';
 
 class DetailSliverDelegate extends SliverPersistentHeaderDelegate{

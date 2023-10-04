@@ -13,22 +13,10 @@ class Pic {
   static List<Pic> Sower() {
     return [
       Pic(
-       'assets/images/boul.jpg',
-        'Centrale Nouadhibou 100MW est...',
-        'Centrale Nouadhibou',
-        'Centrale Electrique'
-      ),
-      Pic(
           'assets/images/sol.jpg',
-          'Centrale Nouadhibou 100MW est...',
-          'Centrale Nouadhibou',
-          'Centrale Electrique'
-      ),
-      Pic(
-          'assets/images/Cnktt.jpg',
-          'Centrale Nouadhibou 100MW est...',
-          'Centrale Nouadhibou',
-          'Centrale Electrique'
+          'Faculte affilié à lUniversite de Nouakchott',
+          'Describtion sur UNV',
+          'Faculte'
       ),
     ];
   }

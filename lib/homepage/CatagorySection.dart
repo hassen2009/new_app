@@ -4,6 +4,8 @@ import 'package:new_app/homepage/ctg/lone.dart';
 
 import 'package:new_app/homepage/models/centraleslist.dart';
 
+import 'ctg/ltwo.dart';
+
 
 class  CatagorySection extends StatelessWidget {
   const CatagorySection({Key? key}) : super(key: key);
@@ -24,7 +26,7 @@ class  CatagorySection extends StatelessWidget {
           children: [
             Container(
              // color: Colors.red,
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.symmetric(horizontal: 15,vertical: 5),
               child: Text("Spécialité",style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold
@@ -34,7 +36,7 @@ class  CatagorySection extends StatelessWidget {
                 height: 120,
               // color: Colors.yellow,
                 child: ListView(
-                    padding: EdgeInsets.symmetric(horizontal: 25,vertical: 0),
+                    padding: EdgeInsets.symmetric(horizontal: 5,vertical: 0),
                     scrollDirection: Axis.horizontal,
                     children: [
                       Padding(
@@ -46,19 +48,13 @@ class  CatagorySection extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Padding(padding: EdgeInsets.only(top: 15)),
+                              Padding(padding: EdgeInsets.only(top: 5)),
                               Container(
                                 width: 60,
                                 padding: EdgeInsets.all(15),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   color: Colors.deepPurpleAccent,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      blurRadius: 1,
-                                      color: Colors.black.withOpacity(0.7)
-                                    )
-                                  ]
                                 ),
                                 child: Center(
                                   child: Center(
@@ -67,7 +63,39 @@ class  CatagorySection extends StatelessWidget {
                                 ),
                               ),
                             Padding(padding: EdgeInsets.only(top: 15)),
-                              Text("EEA",style: TextStyle(
+                              Text("EEA L2",style: TextStyle(
+                                fontSize: 15,
+                              ),),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: InkWell(
+                          onTap:(){
+                            Get.to( ()=> Ea());
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Padding(padding: EdgeInsets.only(top: 8)),
+                              Container(
+                                width: 60,
+                                padding: EdgeInsets.all(15),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.green,
+
+                                ),
+                                child: Center(
+                                  child: Center(
+                                      child: Icon(Icons.electric_bolt_rounded,size: 25,color: Colors.white,)
+                                  ),
+                                ),
+                              ),
+                              Padding(padding: EdgeInsets.only(top: 15)),
+                              Text("EEA L3",style: TextStyle(
                                 fontSize: 15,
                               ),),
                             ],
@@ -79,10 +107,11 @@ class  CatagorySection extends StatelessWidget {
                     ]
                 )
             ),
+            Container(height: 4,color: Get.isDarkMode?Colors.grey[900]:Colors.grey[300],),
             Container(
               //color: Colors.red,
               padding: EdgeInsets.all(20),
-              child: Text("Centrales Électriques",style: TextStyle(
+              child: Text("FST",style: TextStyle(
                   fontSize: 23,
                   fontWeight: FontWeight.bold,
                 fontFamily: "Poppins-Bold"

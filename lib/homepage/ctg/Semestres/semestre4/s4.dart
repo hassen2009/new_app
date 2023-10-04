@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:new_app/homepage/ctg/Semestres/semestre4/addtotds4.dart';
 import 'package:new_app/homepage/ctg/lone.dart';
 import 'package:new_app/homepage/home_page.dart';
 import 'package:new_app/main.dart';
+import 'addtocours4.dart';
 import 'ctdpa.dart';
 class Semestre4  extends StatelessWidget {
   const Semestre4({Key? key}) : super(key: key);
@@ -55,104 +57,36 @@ class Semestre4  extends StatelessWidget {
             children: [
               Text("Semestre 4",style: GoogleFonts.lato(textStyle: TextStyle(color: Colors.blue,fontSize: 30,fontWeight: FontWeight.bold)),),
               SizedBox(height: 30,),
-              OutlinedButton(style: OutlinedButton.styleFrom(
-                  minimumSize: Size.fromHeight(40),
-                  elevation: 0,
-                  textStyle: TextStyle(fontSize: 28),
-                  side:BorderSide(width: 1,color: Colors.blue)
-
-              ),
-                child:Text("Eléctronique Analogique ||",style: GoogleFonts.lato(textStyle: TextStyle(color: Colors.blue,fontSize: 20,fontWeight: FontWeight.normal)),),
-                onPressed: (){Get.to(roles());},
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Get.isDarkMode?Colors.grey[900]:Colors.grey[300],
+                  ),
+                  onPressed: (){Get.to(addtocours4());}, child: Text("Cours",style: TextStyle(color: Get.isDarkMode?Colors.white:Colors.black),)
               ),
               SizedBox(height: 15,),
-              OutlinedButton(style: OutlinedButton.styleFrom(
-                  minimumSize: Size.fromHeight(40),
-                  elevation: 0,
-                  textStyle: TextStyle(fontSize: 28),
-                  side:BorderSide(width: 1,color: Colors.blue)
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Get.isDarkMode?Colors.grey[900]:Colors.grey[300]
+                  ),
+                  onPressed: (){Get.to(()=>addtotds4());}, child: Text("TD",style: TextStyle(color: Get.isDarkMode?Colors.white:Colors.black),)
+              ),
 
-              ),
-                child:Text("Schéma et sécurité électrique",style: GoogleFonts.lato(textStyle: TextStyle(color: Colors.blue,fontSize: 20,fontWeight: FontWeight.normal)),),
-                onPressed: (){},
-              ),
               SizedBox(height: 15,),
-              OutlinedButton(style: OutlinedButton.styleFrom(
-                  minimumSize: Size.fromHeight(40),
-                  elevation: 0,
-                  textStyle: TextStyle(fontSize: 28),
-                  side:BorderSide(width: 1,color: Colors.blue)
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Get.isDarkMode?Colors.grey[900]:Colors.grey[300]
+                  ),
+                  onPressed: (){}, child: Text("TP",style: TextStyle(color: Get.isDarkMode?Colors.white:Colors.black),)
+              ),
 
-              ),
-                child:Text("Circuit électrique",style: GoogleFonts.lato(textStyle: TextStyle(color: Colors.blue,fontSize: 20,fontWeight: FontWeight.normal)),),
-                onPressed: (){},
-              ),
               SizedBox(height: 15,),
-              OutlinedButton(style: OutlinedButton.styleFrom(
-                  minimumSize: Size.fromHeight(40),
-                  elevation: 0,
-                  textStyle: TextStyle(fontSize: 28),
-                  side:BorderSide(width: 1,color: Colors.blue)
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Get.isDarkMode?Colors.grey[900]:Colors.grey[300]
+                  ),
+                  onPressed: (){}, child: Text("Archive",style: TextStyle(color: Get.isDarkMode?Colors.white:Colors.black),)
+              ),
 
-              ),
-                child:Text("Machine électrique ||",style: GoogleFonts.lato(textStyle: TextStyle(color: Colors.blue,fontSize: 20,fontWeight: FontWeight.normal)),),
-                onPressed: (){},
-              ),
-              SizedBox(height: 15,),
-              OutlinedButton(style: OutlinedButton.styleFrom(
-                  minimumSize: Size.fromHeight(40),
-                  elevation: 0,
-                  textStyle: TextStyle(fontSize: 28),
-                  side:BorderSide(width: 1,color: Colors.blue)
-
-              ),
-                child:Text("Thermodynamique",style: GoogleFonts.lato(textStyle: TextStyle(color: Colors.blue,fontSize: 20,fontWeight: FontWeight.normal)),),
-                onPressed: (){},
-              ),
-              SizedBox(height: 15,),
-              OutlinedButton(style: OutlinedButton.styleFrom(
-                  minimumSize: Size.fromHeight(40),
-                  elevation: 0,
-                  textStyle: TextStyle(fontSize: 28),
-                  side:BorderSide(width: 1,color: Colors.blue)
-
-              ),
-                child:Text("Analyse des systèmes linéaires",style: GoogleFonts.lato(textStyle: TextStyle(color: Colors.blue,fontSize: 20,fontWeight: FontWeight.normal)),),
-                onPressed: (){},
-              ),
-              SizedBox(height: 15,),
-              OutlinedButton(style: OutlinedButton.styleFrom(
-                  minimumSize: Size.fromHeight(40),
-                  elevation: 0,
-                  textStyle: TextStyle(fontSize: 28),
-                  side:BorderSide(width: 1,color: Colors.blue)
-
-              ),
-                child:Text("Traitement du signal",style: GoogleFonts.lato(textStyle: TextStyle(color: Colors.blue,fontSize: 20,fontWeight: FontWeight.normal)),),
-                onPressed: (){},
-              ),
-              SizedBox(height: 15,),
-              OutlinedButton(style: OutlinedButton.styleFrom(
-                  minimumSize: Size.fromHeight(40),
-                  elevation: 0,
-                  textStyle: TextStyle(fontSize: 28),
-                  side:BorderSide(width: 1,color: Colors.blue)
-
-              ),
-                child:Text("Français",style: GoogleFonts.lato(textStyle: TextStyle(color: Colors.blue,fontSize: 20,fontWeight: FontWeight.normal)),),
-                onPressed: (){},
-              ),
-              SizedBox(height: 15,),
-              OutlinedButton(style: OutlinedButton.styleFrom(
-                  minimumSize: Size.fromHeight(40),
-                  elevation: 0,
-                  textStyle: TextStyle(fontSize: 28),
-                  side:BorderSide(width: 1,color: Colors.blue)
-
-              ),
-                child:Text("Anglais",style: GoogleFonts.lato(textStyle: TextStyle(color: Colors.blue,fontSize: 20,fontWeight: FontWeight.normal)),),
-                onPressed: (){},
-              ),
 
 
 

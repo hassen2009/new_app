@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:new_app/homepage/authentification.dart';
@@ -9,7 +12,8 @@ import 'package:provider/provider.dart';
 
 class OtpScreen extends StatefulWidget {
   final String verificationId;
-  const OtpScreen({ super.key,required this.verificationId}) ;
+  final String phoneNumber;
+  const OtpScreen({ super.key,required this.verificationId, required this.phoneNumber}) ;
 
   @override
   State<OtpScreen> createState() => _OtpScreenState();
@@ -17,6 +21,66 @@ class OtpScreen extends StatefulWidget {
 
 class _OtpScreenState extends State<OtpScreen> {
   String? otpCode;
+  bool resend = false;
+  int count = 30;
+  final _firebaseAth = FirebaseAuth.instance;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    decompte();
+  }
+  late Timer timer;
+  void decompte(){
+    timer = Timer.periodic(Duration(seconds: 1), (t) {
+     if(count<1){
+       timer.cancel();
+       count=30;
+       resend=true;
+       setState(() {
+
+       });
+       return;
+     } else{
+      count--;
+      if (this.mounted) {
+        setState(() {
+
+        });
+      };}
+
+    });
+  }
+
+  void onResendotpcode(){
+    resend=false;
+    setState(() {
+
+    });
+    final _firebaseAth = FirebaseAuth.instance;
+       _firebaseAth.verifyPhoneNumber(
+        phoneNumber: widget.phoneNumber,
+        verificationCompleted: (PhoneAuthCredential phoneAuthCredential)async{
+          await _firebaseAth.signInWithCredential(phoneAuthCredential);
+        },
+        verificationFailed:(error){
+          throw Exception(error.message);
+        },
+        codeSent: ( verificationId,v){
+          resend=false;
+          decompte();
+          setState(() {
+
+          });
+        },
+        codeAutoRetrievalTimeout: (String verificationId){
+
+        },
+
+      );
+
+  }
+
   @override
   Widget build(BuildContext context) {
     final isLoading = Provider.of<Authprovider>(context,listen : true).isLoading;
@@ -53,6 +117,7 @@ class _OtpScreenState extends State<OtpScreen> {
     Text("Entrer le code de verification  ",style: TextStyle(fontSize: 18),textAlign: TextAlign.center,),
     SizedBox(height: 20,),
     Pinput(
+      keyboardType:TextInputType.phone,
       length: 6,
           showCursor: true,
           defaultPinTheme: PinTheme(
@@ -79,19 +144,29 @@ class _OtpScreenState extends State<OtpScreen> {
       SizedBox(
           width: MediaQuery.of(context).size.width,
           height: 50,
-          child: ElevatedButton(onPressed: (){
+          child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepPurpleAccent
+              ),
+              onPressed: (){
             if(otpCode!=null){
               verifyOtp(context,otpCode!);
             }else{
               showSnackBar(context, "Entrer 6-Digit code");
             }
-          }, child: Text("Verifier")),
+          }, child: Text("Verifier",style: TextStyle(
+            color: Colors.white
+          ),)),
 
       ),
       const SizedBox(height: 20,),
-      Text("don't receive any code ?",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: Colors.black38),),
+      Text("Vous ne recevez aucun code ?",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: Get.isDarkMode?Colors.white38:Colors.black38),),
       SizedBox(height: 20,),
-      Text("Resend new code",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,color: Colors.deepPurpleAccent),)
+      TextButton(
+          style: TextButton.styleFrom(
+            backgroundColor: Get.isDarkMode?Colors.black:Colors.white
+          ),
+          onPressed: !resend?null: onResendotpcode, child: Text(!resend?"00:${count.toString().padLeft(3,"0")}":"Renvoyer",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,color: Get.isDarkMode?Colors.white:Colors.deepPurpleAccent),))
       ],)
           ),
           ),

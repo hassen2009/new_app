@@ -1,12 +1,17 @@
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:new_app/homepage/authentification.dart';
 import 'package:new_app/homepage/home_page.dart';
 import 'package:new_app/model/usermodel.dart';
 import 'package:new_app/utils/utils.dart';
 import 'package:provider/provider.dart';
+
+import '../../empl/imput2.dart';
+import '../../empl/inputfields.dart';
 class UserInformationScreen extends StatefulWidget {
   const UserInformationScreen({super.key});
 
@@ -15,6 +20,11 @@ class UserInformationScreen extends StatefulWidget {
 }
 
 class _UserInformationScreenState extends State<UserInformationScreen> {
+  String _selectedrepeat = "L2";
+  List<String> repeatlist = [
+    "L2",
+    "L3"
+  ];
   File? image;
   final nameController = TextEditingController();
   final bioController = TextEditingController();
@@ -59,26 +69,60 @@ padding: EdgeInsets.symmetric(horizontal: 25,vertical: 15,),
                     child: Column(
                       children: [
                         textField(
-                        hintText: "Entrer votre nom",
+                        hintText: "Entrez votre nom",
                         icon: Icons.account_circle,
                         inputType: TextInputType.name,
                         maxLines: 1,
-                        controller:nameController
+                        controller:nameController,
                     ),
                         textField(
-                            hintText: "Ajouter une bio",
+                            hintText: "Matricule",
                             icon: Icons.edit,
                             inputType: TextInputType.name,
                             maxLines: 1,
                             controller:bioController
+                        ),
+                        Myinputfielduser(
+                          hint: "$_selectedrepeat",
+                          widget: DropdownButton(
+                            icon: Icon(Icons.keyboard_arrow_down,color: Colors.grey,),
+                            iconSize: 32,
+                            elevation: 4,
+                            style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                                color: Colors.grey[600],
+
+                              ),
+                            ),
+                            underline: Container(height: 0,),
+                            onChanged: (String? newValue){
+                              setState(() {
+                                _selectedrepeat = newValue!;
+                              });
+                            },
+                            items: repeatlist.map<DropdownMenuItem<String>>((String value){
+                              return DropdownMenuItem<String>(
+                                value : value,
+                                child: Text(value,style: TextStyle(color: Colors.grey)),
+                              );
+                            }).toList(),
+
+
+                          ),
                         ),
                         SizedBox(height: 20,),
                         SizedBox(
                           height: 50,
                             width: MediaQuery.of(context).size.width,
                           child: ElevatedButton(
-                            child: Text("Continue"),
-                            onPressed: () =>storeData(),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Get.isDarkMode?Colors.deepPurpleAccent:Colors.deepPurpleAccent
+                            ),
+                            child: Text("Continue",style: TextStyle(color: Colors.white)),
+                            onPressed: () => storeData()
+                              ,
                           ),
                         )
                       ],
@@ -134,7 +178,11 @@ padding: EdgeInsets.symmetric(horizontal: 25,vertical: 15,),
         profilePic: "",
         createdAt: "",
         phoneNumber:"",
-        uid: "");
+        uid: "",
+        role: "",
+        role2: "",
+      typel: _selectedrepeat
+    );
     if(image!=null&&nameController.text.isNotEmpty&&bioController.text.isNotEmpty){
        ap.saveUserDataToFirebase(
           context: context,

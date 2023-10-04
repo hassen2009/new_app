@@ -17,13 +17,13 @@ import 'package:new_app/homepage/home_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:new_app/homepage/models/opt_Screen.dart';
-
+const kWebRecaptchaSiteKey = '6Lemcn0dAAAAABLkf6aiiHvpGD6x-zF3nOSDU2M8';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
   );
   await FirebaseAppCheck.instance.activate(
-  webRecaptchaSiteKey: 'recaptcha-v3-site-key',
+    webProvider:ReCaptchaV3Provider(kWebRecaptchaSiteKey),
     androidProvider: AndroidProvider.debug,
     appleProvider: AppleProvider.appAttest,
   );
@@ -62,7 +62,7 @@ class _MyAppState extends State<MyApp> {
         theme: Hmode.lightTheme,
         darkTheme: Hmode.darkTheme,
         themeMode: themeservices().theme,
-        home: Scaffold(
+        home: const Scaffold(
           resizeToAvoidBottomInset: false,
           body: welcomescreen(),
         ),

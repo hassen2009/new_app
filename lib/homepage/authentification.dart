@@ -31,7 +31,6 @@ class Authprovider extends ChangeNotifier {
   
    checkSignIn();
  }
-
   void checkSignIn() async {
   final SharedPreferences s = await SharedPreferences.getInstance();
   _isSignedIn = s.getBool("is_signedin")??false;
@@ -46,6 +45,7 @@ class Authprovider extends ChangeNotifier {
   void signInWithPhone(BuildContext context,String phoneNumber) async {
   try { await _firebaseAth.verifyPhoneNumber(
    phoneNumber: phoneNumber,
+      timeout: Duration(seconds: 30),
       verificationCompleted: (PhoneAuthCredential phoneAuthCredential)async{
        await _firebaseAth.signInWithCredential(phoneAuthCredential);
       },
@@ -53,10 +53,12 @@ class Authprovider extends ChangeNotifier {
        throw Exception(error.message);
       },
       codeSent: (String verificationId,int? forceResendingToken){
-
-         Get.to(OtpScreen(verificationId: verificationId),);
+         Get.to(OtpScreen(verificationId: verificationId, phoneNumber:phoneNumber,),);
       },
-      codeAutoRetrievalTimeout: (String verificationId){}
+      codeAutoRetrievalTimeout: (String verificationId){
+
+      },
+
   );} on  FirebaseAuthException catch(e){
    showSnackBar(context, e.message.toString());
   }
@@ -108,10 +110,9 @@ class Authprovider extends ChangeNotifier {
      });
      _userModel = userModel;
      await _firebaseFireStore.collection("users").doc(_uid).set(userModel.toMap()).then((value){
-       onSuccess(){
+       onSuccess();
          _isLoading = false;
          notifyListeners();
-       }
      });
    } on FirebaseAuthException catch (e) {
      showSnackBar(context, e.message.toString());
@@ -133,6 +134,9 @@ Future<String> storeFileToStorage(String ref,File file)async {
          createdAt: snapshot["createdAt"],
          phoneNumber: snapshot["phoneNumber"],
          uid: snapshot["uid"],
+         role: snapshot["role"],
+         role2: snapshot["role2"],
+         typel: snapshot["typel"]
      );
 
      _uid = userModel.uid;

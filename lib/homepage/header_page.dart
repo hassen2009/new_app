@@ -1,49 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class HeaderSection extends StatelessWidget {
+class HeaderSection extends StatefulWidget {
   const HeaderSection({super.key});
 
   @override
+  State<HeaderSection> createState() => _HeaderSectionState();
+}
+
+class _HeaderSectionState extends State<HeaderSection> {
+  @override
   Widget build(BuildContext context) {
     return  Container(
-      padding: EdgeInsets.only(
-        top: MediaQuery.of(context).padding.top,
-        left: 20,
-        right: 35,
-      ),
-      height : 100,
-      child: Row(
+      padding: EdgeInsets.symmetric(vertical: 8,horizontal: 15),
+      height : 170,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-          Padding(
-            padding: EdgeInsets.only(top: 10),
-            child: Text('Accueil',
-              style: TextStyle(
-                fontSize: 30,
-                color: Get.isDarkMode?Colors.white:Colors.black,
-                  fontWeight: FontWeight.bold,
-                fontFamily: "Poppins-Bold"
-              ),
-            ),
-          ),
-          SizedBox(height: 5,),
-          Text('Chercher votre emploi',
-            style: TextStyle(
-              fontSize: 15,
-              color: Theme.of(context).colorScheme.secondary,
-                fontWeight: FontWeight.bold,
-                fontFamily: "Poppins-Bold"
-            ),
-          ),
-          ],
-          ),
-
+          Text("Statut",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24,color: Get.isDarkMode?Colors.white:Colors.black),)
         ],
-      ),
+      )
     );
   }
-
 }

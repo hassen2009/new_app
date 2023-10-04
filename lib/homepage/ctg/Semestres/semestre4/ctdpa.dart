@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../home_page.dart';
-import 'addone.dart';
+import 'addtocours4.dart';
 class roles extends StatelessWidget {
   const roles({Key? key}) : super(key: key);
 
@@ -56,23 +56,6 @@ class roles extends StatelessWidget {
              child: SingleChildScrollView(
                child: Column(
                  children: [
-                   ElevatedButton(
-                       onPressed: (){Get.to(addone());}, child: Text("Cours",style: TextStyle(color: Get.isDarkMode?Colors.white:Colors.white),)
-                   ),
-                   SizedBox(height: 15,),
-                   ElevatedButton(
-                       onPressed: (){}, child: Text("TD",style: TextStyle(color: Get.isDarkMode?Colors.white:Colors.white),)
-                   ),
-
-                   SizedBox(height: 15,),
-                   ElevatedButton(
-                       onPressed: (){}, child: Text("TP",style: TextStyle(color: Get.isDarkMode?Colors.white:Colors.white),)
-                   ),
-
-                   SizedBox(height: 15,),
-                   ElevatedButton(
-                       onPressed: (){}, child: Text("Archive",style: TextStyle(color: Get.isDarkMode?Colors.white:Colors.white),)
-                   ),
 
                  ],
                ),

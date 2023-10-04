@@ -62,7 +62,7 @@ class Hmode{
       ),
       bottomAppBarTheme: BottomAppBarTheme(color: Colors.black),
     datePickerTheme: DatePickerThemeData(),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(selectedItemColor: Colors.black,backgroundColor: Colors.white),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(selectedItemColor: Colors.black,backgroundColor: Colors.white,),
     iconTheme: IconThemeData(color: Colors.black),
     scaffoldBackgroundColor: Colors.white,
       bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.white,),
@@ -75,7 +75,6 @@ class Hmode{
       minimumSize: Size(400, 50),
       textStyle: TextStyle(fontSize: 20,fontWeight: FontWeight.normal)
     )),
-
 
   );
   static ThemeData darkTheme = ThemeData(

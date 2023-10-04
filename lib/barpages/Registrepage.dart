@@ -1,6 +1,7 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:new_app/barpages/welcomescreen.dart';
 import 'package:provider/provider.dart';
 import '../homepage/authentification.dart';
  class Registrepage extends StatefulWidget {
@@ -32,6 +33,7 @@ import '../homepage/authentification.dart';
      );
      return Scaffold(
        resizeToAvoidBottomInset: false,
+       appBar: AppBar(leading: IconButton(onPressed: (){Get.to(()=>welcomescreen());}, icon: Icon(Icons.arrow_back_ios)),),
        body: SafeArea(child: Padding(
          padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 25),
          child: Center(
@@ -40,29 +42,30 @@ import '../homepage/authentification.dart';
                mainAxisAlignment: MainAxisAlignment.center,
                crossAxisAlignment: CrossAxisAlignment.center,
                children: [
-                 const Icon(Icons.verified_user_outlined,size: 120,color: Colors.deepPurpleAccent,),
+                 const Icon(Icons.perm_contact_cal_outlined,size: 120,color: Colors.deepPurpleAccent,),
+                 const SizedBox(height: 15,),
                  const SizedBox(height: 20,),
-                 const Text("Enregistrer",style: TextStyle(fontSize: 35,fontWeight: FontWeight.bold),),
-                 const SizedBox(height: 10,),
-                 const Text("Ajoutez votre numéro de téléphone, nous vous enverrons un code de vérification"),
-                 const SizedBox(height: 20,),
+                 const Text("Un message de vérification sera envoyé à votre numéro de téléphone"
+                 ,style: TextStyle(fontWeight: FontWeight.normal,fontSize: 14),textAlign: TextAlign.center,),
+                 const SizedBox(height: 30,),
                  TextFormField(
+                   keyboardType: TextInputType.phone,
                    controller: registercontroller ,
                    style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
                    onChanged:(value){setState(() {
                      registercontroller.text = value;
                    });},
                    decoration: InputDecoration(
-                     hintText: "Entrer votre numero de telephone",
+                     hintText: "Entrez votre numéro de téléphone",
                      hintStyle: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey.shade600),
                      enabledBorder: OutlineInputBorder(
                        borderRadius: BorderRadius.circular(10),
-                       borderSide: const BorderSide(color: Colors.black38),
+                       borderSide:  BorderSide(color: Get.isDarkMode?Colors.white30:Colors.black38),
 
                      ),
                      focusedBorder: OutlineInputBorder(
                        borderRadius: BorderRadius.circular(10),
-                       borderSide: const BorderSide(color: Colors.deepPurpleAccent,width: 3)
+                       borderSide: const BorderSide(color: Colors.deepPurpleAccent,width: 1)
                      ),
                      prefixIcon: Container(
                        padding: const EdgeInsets.all(16),
@@ -78,7 +81,7 @@ import '../homepage/authentification.dart';
                              }
                          );
                        },
-                       child: Text("${country.flagEmoji} + ${country.phoneCode}",
+                       child: Text("+ ${country.phoneCode}  |",
                        style: const TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
                      ),
                      ),
@@ -101,8 +104,9 @@ import '../homepage/authentification.dart';
                    style: ElevatedButton.styleFrom(
                      backgroundColor: Get.isDarkMode?Colors.deepPurpleAccent[200]:Colors.deepPurpleAccent[200]
                    ),
-                 child: const Text("Se connecter"),onPressed: ()=> sendPhoneNumber())
-
+                 child: const Text("Se connecter",style: TextStyle(
+                   fontSize: 16,fontWeight: FontWeight.normal,color: Colors.white
+                 ),),onPressed: ()=>sendPhoneNumber())
                ],
              ),
            ),
