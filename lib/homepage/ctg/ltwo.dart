@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:new_app/homepage/ctg/Semestres/semestre4/s5.dart';
 import '../../EEa/homes/homes1.dart';
 class Ea extends StatefulWidget {
   Ea({Key? key}) : super(key: key);
@@ -119,7 +120,7 @@ class _EaState extends State<Ea> {
 
                                     ),
                                       child:Text("Semestre 5",style: GoogleFonts.lato(textStyle: TextStyle(color: Colors.blue,fontSize: 25)),),
-                                      onPressed: (){},
+                                      onPressed: (){Get.to(()=>Semestre5());},
                                     ),
                                     SizedBox(height: 15,),
                                     OutlinedButton(style: OutlinedButton.styleFrom(

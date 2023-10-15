@@ -43,15 +43,14 @@ class _HomePgeState extends State<HomePge> {
       resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
       extendBody: true,
-
       appBar: AppBar(
-        flexibleSpace: ClipRect(child: BackdropFilter(filter: ImageFilter.blur(sigmaX: 25,sigmaY: 25),
+        flexibleSpace: ClipRect(child: BackdropFilter(filter: ImageFilter.blur(sigmaY: 25,sigmaX: 25,),
         child: Container(
-          color: Colors.transparent,
+          color: Get.isDarkMode?Colors.black:Colors.transparent,
         ),
         ),),
         elevation: 0,
-        backgroundColor: Get.isDarkMode?Colors.black.withAlpha(1000):Colors.white.withAlpha(2000),
+        backgroundColor: Get.isDarkMode?Colors.black.withAlpha(2000):Colors.white.withAlpha(2000),
        actions: [
          GestureDetector(
            onTap: (){
@@ -164,10 +163,10 @@ const  MyDrawer ({super.key});
    return Drawer(
    backgroundColor: Get.isDarkMode?CupertinoColors.darkBackgroundGray:Colors.white,
      child: SingleChildScrollView(
-
          child: Column(
            children: [
-             DrawerHeader(child: CircleAvatar(
+             DrawerHeader(
+               child: CircleAvatar(
                backgroundColor: Colors.deepPurpleAccent,
                backgroundImage: NetworkImage(ap.userModel.profilePic),
                radius: 50,

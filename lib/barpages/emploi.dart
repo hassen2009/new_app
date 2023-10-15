@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:new_app/barpages/emplr.dart';
+import 'package:new_app/barpages/emplrl2.dart';
 import 'package:new_app/base/taskcontroller.dart';
 import 'package:new_app/empl/empl1.dart';
 import 'package:new_app/empl/mtrbtn.dart';
@@ -51,7 +52,7 @@ class _emploiState extends State<emploi> {
   Widget build(BuildContext context) {
     print("build method called");
     return  Padding(
-      padding: const EdgeInsets.only(top: 85.0),
+      padding: const EdgeInsets.only(top: 98.0),
       child: SingleChildScrollView(
         child: Stack(
           children: [
@@ -62,7 +63,7 @@ class _emploiState extends State<emploi> {
                 children: [
                   _Matiere(),
                   _adddatebar(),
-                  _showtask(),
+                 _showtask(),
                 ],
               ),
             )
@@ -164,7 +165,9 @@ class _emploiState extends State<emploi> {
                 );
                }
                else{
-                 return Container();
+                 return Container(
+
+                 );
                }
 
          });
@@ -234,16 +237,16 @@ class _emploiState extends State<emploi> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TextButton(
-                        onPressed: () { typel=="L2"?null:Get.to(
+                        onPressed: () { typel=="L2"?Get.to(()=>emprl2()):typel=="L3"?Get.to(
                             ()=> empr()
-                        );},
+                        ):null;},
                         child: Text("Emploi", style: GoogleFonts.lato(
                           textStyle: TextStyle(
                               color: Get.isDarkMode?Colors.white:Colors.black,
                               fontWeight: FontWeight.bold,
                               fontSize: 30
                           ),),
-                      ),style: TextButton.styleFrom(backgroundColor: Colors.transparent),
+                      ),style: TextButton.styleFrom(backgroundColor: Colors.transparent,  ),
                       ),
                     SizedBox(height: 8,),
                     Row(children: [

@@ -40,6 +40,7 @@ class _showstoryState extends State<showstory> {
                    fontWeight: FontWeight.bold,
                   ),
                   ),
+
                 ],onStoryShow: (s){
 
             },
@@ -56,12 +57,7 @@ class _showstoryState extends State<showstory> {
                 controller: stroyController,
 
             ),
-            Align(alignment: Alignment.topRight,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: IconButton(onPressed: (){Get.back();},icon: Icon(Icons.cancel,color: Colors.grey[300],size: 30,),),
-            ),
-            ),
+
             Align(alignment: Alignment.topLeft,
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 20),
@@ -75,13 +71,14 @@ class _showstoryState extends State<showstory> {
                       backgroundImage: NetworkImage(widget.photos,),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.only(left: 10,top: 5),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                            Text(widget.name!,style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold)),
-                          Text("Aujourd'hui")
+                          Text(widget.name!,style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold)),
+                          SizedBox(height: 5,),
+                          Text("Aujourd'hui",style: TextStyle(color: Colors.grey[100]),)
                         ],
                       ),
                     )

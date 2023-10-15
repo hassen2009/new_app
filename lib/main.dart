@@ -5,27 +5,25 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:new_app/Db/dbhelper.dart';
-import 'package:new_app/homepage/pages.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:new_app/barpages/welcomescreen.dart';
 import '../empl/services.dart';
-import '../barpages/rattrapage.dart';
-import '../barpages/emploi.dart';
 import '../barpages/themess.dart';
 import 'package:new_app/homepage/authentification.dart';
-import 'package:new_app/homepage/home_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'package:new_app/homepage/models/opt_Screen.dart';
+
 const kWebRecaptchaSiteKey = '6Lemcn0dAAAAABLkf6aiiHvpGD6x-zF3nOSDU2M8';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform
   );
   await FirebaseAppCheck.instance.activate(
-    webProvider:ReCaptchaV3Provider(kWebRecaptchaSiteKey),
     androidProvider: AndroidProvider.debug,
-    appleProvider: AppleProvider.appAttest,
+    appleProvider: AppleProvider.debug,
+    webProvider: ReCaptchaV3Provider(kWebRecaptchaSiteKey),
   );
   await DBHelper.initDb();
   await GetStorage.init();

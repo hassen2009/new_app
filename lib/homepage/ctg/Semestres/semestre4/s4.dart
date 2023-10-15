@@ -3,11 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:new_app/homepage/ctg/Semestres/semestre4/addtotds4.dart';
-import 'package:new_app/homepage/ctg/lone.dart';
 import 'package:new_app/homepage/home_page.dart';
-import 'package:new_app/main.dart';
 import 'addtocours4.dart';
-import 'ctdpa.dart';
 class Semestre4  extends StatelessWidget {
   const Semestre4({Key? key}) : super(key: key);
 
@@ -70,25 +67,6 @@ class Semestre4  extends StatelessWidget {
                   ),
                   onPressed: (){Get.to(()=>addtotds4());}, child: Text("TD",style: TextStyle(color: Get.isDarkMode?Colors.white:Colors.black),)
               ),
-
-              SizedBox(height: 15,),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Get.isDarkMode?Colors.grey[900]:Colors.grey[300]
-                  ),
-                  onPressed: (){}, child: Text("TP",style: TextStyle(color: Get.isDarkMode?Colors.white:Colors.black),)
-              ),
-
-              SizedBox(height: 15,),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Get.isDarkMode?Colors.grey[900]:Colors.grey[300]
-                  ),
-                  onPressed: (){}, child: Text("Archive",style: TextStyle(color: Get.isDarkMode?Colors.white:Colors.black),)
-              ),
-
-
-
 
             ],
           ),

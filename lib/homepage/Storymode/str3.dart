@@ -122,14 +122,16 @@ class _statState extends State<stat> {
                   )
               ),
               decoration: InputDecoration(
-              hintText: "ajouter story",
+              hintText: "Ajoutez un statut",
               border: InputBorder.none,
               hintStyle: GoogleFonts.lato(
                   textStyle: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
                       color: Get.isDarkMode?Colors.grey[600]:Colors.grey[600]
+
                   ),
+
               ),
               focusedBorder: UnderlineInputBorder(
                 borderSide: BorderSide(

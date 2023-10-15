@@ -80,7 +80,7 @@ class _conferenceState extends State<conference> {
                       SizedBox(width: 8,),
                       Text("Utilisateurs",)
                     ],),
-                    IconButton(onPressed: (){typel=="L2"?Get.to(()=>Userlist()):Get.to(()=>Userlistl3());}, icon:Icon(Icons.navigate_next))
+                    IconButton(onPressed: (){typel=="L2"?Get.to(()=>Userlist()):typel=="L3"?Get.to(()=>Userlistl3()):null;}, icon:Icon(Icons.navigate_next))
                   ],
                 ),
               )

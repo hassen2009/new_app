@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:new_app/EEa/homes/btneea.dart';
+import 'package:new_app/homepage/ctg/Semestres/semestre4/s3.dart';
 import 'package:new_app/homepage/ctg/ltwo.dart';
 import '../../EEa/homes/homes2.dart';
 import '../../empl/empl1.dart';
@@ -127,7 +128,7 @@ class _EeaState extends State<Eea> {
 
                                     ),
                                         child:Text("Semestre 3",style: GoogleFonts.lato(textStyle: TextStyle(color: Colors.blue,fontSize: 25)),),
-                                      onPressed: (){},
+                                      onPressed: (){Get.to(()=>Semestre3());},
                                     ),
                                     SizedBox(height: 15,),
                                     OutlinedButton(style: OutlinedButton.styleFrom(
@@ -138,7 +139,7 @@ class _EeaState extends State<Eea> {
 
                                     ),
                                       child:Text("Semestre 4",style: GoogleFonts.lato(textStyle: TextStyle(color: Colors.blue,fontSize: 25)),),
-                                      onPressed: (){Get.to(Semestre4());},
+                                      onPressed: (){Get.to(()=>Semestre4());},
                                     ),
 
                                   ],

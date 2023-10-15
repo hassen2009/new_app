@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:easy_pdf_viewer/easy_pdf_viewer.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +14,14 @@ class addtocours4 extends StatefulWidget {
   State<addtocours4> createState() => _addtocours4State();
 }
 class _addtocours4State extends State<addtocours4> {
+  String role = "user";
+  _checkrole()async{
+    User? user = FirebaseAuth.instance.currentUser;
+    final DocumentSnapshot snap = await FirebaseFirestore.instance.collection("users").doc(user?.uid).get();
+    setState((){
+      role = snap['role'];
+    });
+  }
   final FirebaseFirestore  _firebaseFirestore = FirebaseFirestore.instance;
   List<Map<String, dynamic>> pdfData =[];
 
@@ -52,6 +60,7 @@ class _addtocours4State extends State<addtocours4> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    _checkrole();
    getAllPdf();
   }
   @override
@@ -120,7 +129,7 @@ class _addtocours4State extends State<addtocours4> {
         );
         }
     ),
-      floatingActionButton: FloatingActionButton(onPressed: pickFile,
+      floatingActionButton: FloatingActionButton(onPressed: role=="admin l3"?pickFile:role=="admin"?pickFile:null,
         child: Icon(Icons.upload_file,color: Get.isDarkMode?Colors.white:Colors.red,),
         backgroundColor: Get.isDarkMode?Colors.grey[900]:Colors.white,
 

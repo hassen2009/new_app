@@ -5,14 +5,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-class empr extends StatefulWidget {
-  const empr({super.key});
+class emprl2 extends StatefulWidget {
+  const emprl2({super.key});
 
   @override
-  State<empr> createState() => _emprState();
+  State<emprl2> createState() => _emprl2State();
 }
 
-class _emprState extends State<empr> {
+class _emprl2State extends State<emprl2> {
   @override
   void initState() {
     // TODO: implement initState
@@ -28,12 +28,12 @@ class _emprState extends State<empr> {
     });
   }
 
-  final CollectionReference _cour = FirebaseFirestore.instance.collection("lundi");
-  final CollectionReference _mardi = FirebaseFirestore.instance.collection("mardi");
-  final CollectionReference _mercredi = FirebaseFirestore.instance.collection("mercredi");
-  final CollectionReference _jeudi = FirebaseFirestore.instance.collection("jeudi");
-  final CollectionReference _vendredi = FirebaseFirestore.instance.collection("vendredi");
-  final CollectionReference _samedi = FirebaseFirestore.instance.collection("samedi");
+  final CollectionReference _cour = FirebaseFirestore.instance.collection("lundil2");
+  final CollectionReference _mardi = FirebaseFirestore.instance.collection("mardil2");
+  final CollectionReference _mercredi = FirebaseFirestore.instance.collection("mercredil2");
+  final CollectionReference _jeudi = FirebaseFirestore.instance.collection("jeudil2");
+  final CollectionReference _vendredi = FirebaseFirestore.instance.collection("vendredil2");
+  final CollectionReference _samedi = FirebaseFirestore.instance.collection("samedil2");
   final TextEditingController cours=TextEditingController();
   final TextEditingController date=TextEditingController();
   final TextEditingController prof=TextEditingController();
@@ -791,19 +791,19 @@ class _emprState extends State<empr> {
         elevation: 0,
         backgroundColor: Get.isDarkMode?Colors.black.withAlpha(1000):Colors.white.withAlpha(2000),
         leading:Container(
-        margin: EdgeInsets.all(12),
-        padding: EdgeInsets.only(left: 7),
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primary,
-          borderRadius: BorderRadius.circular(25),
-        ),
-        child: GestureDetector(
-          onTap: (){
-            Get.back();
-          },
-          child: Icon(Icons.arrow_back_ios,size: 20,),
-        ),
-      ) ,),
+          margin: EdgeInsets.all(12),
+          padding: EdgeInsets.only(left: 7),
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primary,
+            borderRadius: BorderRadius.circular(25),
+          ),
+          child: GestureDetector(
+            onTap: (){
+              Get.back();
+            },
+            child: Icon(Icons.arrow_back_ios,size: 20,),
+          ),
+        ) ,),
       body:  Container(
         height: 7000,
         child: SingleChildScrollView(
@@ -829,7 +829,7 @@ class _emprState extends State<empr> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text("Lundi",style: GoogleFonts.lato(textStyle: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,overflow: TextOverflow.ellipsis,color:Get.isDarkMode?Colors.black:Colors.white,),)),
-                              role=="admin l3"?IconButton(onPressed: ()=> create(), icon: Icon(Icons.add_circle,color: Get.isDarkMode?Colors.black:Colors.white,)):IconButton(onPressed: ()=> null, icon: Icon(Icons.calendar_today,color: Get.isDarkMode?Colors.black:Colors.white,))
+                              role=="admin"?IconButton(onPressed: ()=> create(), icon: Icon(Icons.add_circle,color: Get.isDarkMode?Colors.black:Colors.white,)):IconButton(onPressed: ()=> null, icon: Icon(Icons.calendar_today,color: Get.isDarkMode?Colors.black:Colors.white,))
                             ],)
                       ),
                     ),
@@ -880,7 +880,7 @@ class _emprState extends State<empr> {
                                         SizedBox(width: 8,),
                                       ],)
                                     ],),
-                                  trailing:role=="admin l3"?SizedBox(
+                                  trailing:role=="admin"?SizedBox(
                                     width: 96,
                                     child:  Row(
                                       children: [
@@ -920,7 +920,7 @@ class _emprState extends State<empr> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text("Mardi",style: GoogleFonts.lato(textStyle: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,overflow: TextOverflow.ellipsis,color:Get.isDarkMode?Colors.black:Colors.white,),)),
-                              role=="admin l3"? IconButton(onPressed: ()=> createm(), icon: Icon(Icons.add_circle,color: Get.isDarkMode?Colors.black:Colors.white,)): IconButton(onPressed: ()=> null, icon: Icon(Icons.calendar_today,color: Get.isDarkMode?Colors.black:Colors.white,))
+                              role=="admin"? IconButton(onPressed: ()=> createm(), icon: Icon(Icons.add_circle,color: Get.isDarkMode?Colors.black:Colors.white,)): IconButton(onPressed: ()=> null, icon: Icon(Icons.calendar_today,color: Get.isDarkMode?Colors.black:Colors.white,))
                             ],)
                       ),
                     ),
@@ -971,7 +971,7 @@ class _emprState extends State<empr> {
                                         SizedBox(width: 8,),
                                       ],)
                                     ],),
-                                  trailing:role=="admin l3"?SizedBox(
+                                  trailing:role=="admin"?SizedBox(
                                     width: 96,
                                     child: Row(
                                       children: [
@@ -1011,7 +1011,7 @@ class _emprState extends State<empr> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text("Mercredi",style: GoogleFonts.lato(textStyle: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,overflow: TextOverflow.ellipsis,color:Get.isDarkMode?Colors.black:Colors.white,),)),
-                              role=="admin l3"?IconButton(onPressed: ()=> createmer(), icon: Icon(Icons.add_circle,color: Get.isDarkMode?Colors.black:Colors.white,)):IconButton(onPressed: ()=> null, icon: Icon(Icons.calendar_today,color: Get.isDarkMode?Colors.black:Colors.white,))
+                              role=="admin"?IconButton(onPressed: ()=> createmer(), icon: Icon(Icons.add_circle,color: Get.isDarkMode?Colors.black:Colors.white,)):IconButton(onPressed: ()=> null, icon: Icon(Icons.calendar_today,color: Get.isDarkMode?Colors.black:Colors.white,))
                             ],)
                       ),
                     ),
@@ -1062,7 +1062,7 @@ class _emprState extends State<empr> {
                                         SizedBox(width: 8,),
                                       ],)
                                     ],),
-                                  trailing:role=="admin l3"?SizedBox(
+                                  trailing:role=="admin"?SizedBox(
                                     width: 96,
                                     child: Row(
                                       children: [
@@ -1102,7 +1102,7 @@ class _emprState extends State<empr> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text("Jeudi",style: GoogleFonts.lato(textStyle: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,overflow: TextOverflow.ellipsis,color:Get.isDarkMode?Colors.black:Colors.white,),)),
-                              role=="admin l3"?IconButton(onPressed: ()=> createjeu(), icon: Icon(Icons.add_circle,color: Get.isDarkMode?Colors.black:Colors.white,)):IconButton(onPressed: ()=> null, icon: Icon(Icons.calendar_today,color: Get.isDarkMode?Colors.black:Colors.white,))
+                              role=="admin"?IconButton(onPressed: ()=> createjeu(), icon: Icon(Icons.add_circle,color: Get.isDarkMode?Colors.black:Colors.white,)):IconButton(onPressed: ()=> null, icon: Icon(Icons.calendar_today,color: Get.isDarkMode?Colors.black:Colors.white,))
                             ],)
                       ),
                     ),
@@ -1153,7 +1153,7 @@ class _emprState extends State<empr> {
                                         SizedBox(width: 8,),
                                       ],)
                                     ],),
-                                  trailing:role=="admin l3"?SizedBox(
+                                  trailing:role=="admin"?SizedBox(
                                     width: 96,
                                     child: Row(
                                       children: [
@@ -1193,7 +1193,7 @@ class _emprState extends State<empr> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text("Vendredi",style: GoogleFonts.lato(textStyle: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,overflow: TextOverflow.ellipsis,color:Get.isDarkMode?Colors.black:Colors.white,),)),
-                              role=="admin l3"?IconButton(onPressed: ()=>createven(), icon: Icon(Icons.add_circle,color: Get.isDarkMode?Colors.black:Colors.white,)):IconButton(onPressed: ()=>null, icon: Icon(Icons.calendar_today,color: Get.isDarkMode?Colors.black:Colors.white,))
+                              role=="admin"?IconButton(onPressed: ()=>createven(), icon: Icon(Icons.add_circle,color: Get.isDarkMode?Colors.black:Colors.white,)):IconButton(onPressed: ()=>null, icon: Icon(Icons.calendar_today,color: Get.isDarkMode?Colors.black:Colors.white,))
                             ],)
                       ),
                     ),
@@ -1244,7 +1244,7 @@ class _emprState extends State<empr> {
                                         SizedBox(width: 8,),
                                       ],)
                                     ],),
-                                  trailing:role=="admin l3"?SizedBox(
+                                  trailing:role=="admin"?SizedBox(
                                     width: 96,
                                     child: Row(
                                       children: [
@@ -1284,7 +1284,7 @@ class _emprState extends State<empr> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text("Samedi",style: GoogleFonts.lato(textStyle: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,overflow: TextOverflow.ellipsis,color:Get.isDarkMode?Colors.black:Colors.white,),)),
-                              role=="admin l3"?IconButton(onPressed: ()=>createsam(), icon: Icon(Icons.add_circle,color: Get.isDarkMode?Colors.black:Colors.white,)):IconButton(onPressed: ()=>null, icon: Icon(Icons.calendar_today,color: Get.isDarkMode?Colors.black:Colors.white,))
+                              role=="admin"?IconButton(onPressed: ()=>createsam(), icon: Icon(Icons.add_circle,color: Get.isDarkMode?Colors.black:Colors.white,)):IconButton(onPressed: ()=>null, icon: Icon(Icons.calendar_today,color: Get.isDarkMode?Colors.black:Colors.white,))
                             ],)
                       ),
                     ),
@@ -1335,7 +1335,7 @@ class _emprState extends State<empr> {
 
                                     ],)
                                   ],),
-                                trailing:role=="admin l3"?SizedBox(
+                                trailing:role=="admin"?SizedBox(
                                   width: 96,
                                   child: Row(
                                     children: [
@@ -1343,7 +1343,7 @@ class _emprState extends State<empr> {
                                       IconButton(onPressed: ()=>deletesam(documentSnapshot.id), icon: Icon(Icons.delete,color:Get.isDarkMode?Colors.yellowAccent:Colors.deepPurpleAccent,size: 22,)),
                                     ],),
                                 ):Container(width: 96,),
-                                ),);
+                              ),);
                               },
                               itemCount: streamsnapshot.data!.docs.length);
                         }

@@ -23,7 +23,8 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
   String _selectedrepeat = "L2";
   List<String> repeatlist = [
     "L2",
-    "L3"
+    "L3",
+    "Autre chose"
   ];
   File? image;
   final nameController = TextEditingController();
