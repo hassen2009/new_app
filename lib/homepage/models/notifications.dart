@@ -2,8 +2,8 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 import '../../base/task.dart';
 
 class NotifyHelper{
@@ -17,23 +17,24 @@ class NotifyHelper{
       sound: true,
     );
   }
-  FlutterLocalNotificationsPlugin
+  final FlutterLocalNotificationsPlugin
   flutterLocalNotificationsPlugin =
   FlutterLocalNotificationsPlugin(); //
 
-  initializeNotification() async {
+  Future<void> initializeNotification() async {
     _configureLocalTimeZone();
     // this is for latest iOS settings
-    final DarwinInitializationSettings initializationSettingsIOS =
+    AndroidInitializationSettings initializationSettingsAndroid =
+    AndroidInitializationSettings("logo4");
+
+    var  initializationSettingsIOS =
     DarwinInitializationSettings(
-        requestSoundPermission: false,
-        requestBadgePermission: false,
-        requestAlertPermission: false,
+        requestSoundPermission: true,
+        requestBadgePermission: true,
+        requestAlertPermission: true,
         onDidReceiveLocalNotification: onDidReceiveLocalNotification
     );
 
-    final AndroidInitializationSettings initializationSettingsAndroid =
-        AndroidInitializationSettings("logo4");
 
       final InitializationSettings initializationSettings =
       InitializationSettings(
@@ -61,19 +62,25 @@ class NotifyHelper{
       payload: 'It could be anything you pass',
     );
   }
-  scheduledNotification(int hour, int minutes,Task task) async {
+  det(){
+    return NotificationDetails(
+        android: AndroidNotificationDetails( "channelId",
+          "channelName",
+        ),
+        iOS: DarwinNotificationDetails()
+    );
+  }
+  Future shedulNot(int hour, int minutes,Task task) async {
     await flutterLocalNotificationsPlugin.zonedSchedule(
       task.id!.toInt(),
       task.salle,
       task.title,
     _convertTime(hour,minutes),
-    //tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
-     NotificationDetails(
-      android: AndroidNotificationDetails("cyour channel id", "your channelName"),
-    ),
+      await det(),
       uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
     matchDateTimeComponents: DateTimeComponents.time,
-      payload: "{$task.title}"+"{$task.salle}|"
+      payload: "{$task.title}"+"{$task.salle}|",
+
     );
   }
   Future selectNotification(String? payload) async {
@@ -84,8 +91,7 @@ class NotifyHelper{
     }
     Get.to(()=>Container(color: Colors.white,));
   }
-  Future onDidReceiveLocalNotification(
-      int id, String? title, String? body, String? payload) async {
+  Future onDidReceiveLocalNotification(int id, String? title, String? body, String? payload) async {
     // display a dialog with the notification details, tap ok to go to another page
       //context: context,
       Get.dialog(Text("welcome to flutter"));
@@ -103,4 +109,22 @@ class NotifyHelper{
     final String timeZone = await FlutterTimezone.getLocalTimezone();
     tz.setLocalLocation(tz.getLocation(timeZone));
   }
+  Details(){
+    return NotificationDetails(
+      android: AndroidNotificationDetails(
+          "channelId",
+          "channelName",
+          importance: Importance.max
+
+      ),
+      iOS: DarwinNotificationDetails()
+    );
+  }
+  Future showNotification(
+      {int id = 0, String? title, String? body, String? payLoad})async{
+    return flutterLocalNotificationsPlugin.show(
+    id,title,body, await Details()
+    );
+  }
+
 }

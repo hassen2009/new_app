@@ -1,50 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 class Hmode{
   static ThemeData lightTheme = ThemeData(
    textButtonTheme: TextButtonThemeData(
      style: ButtonStyle(
        foregroundColor: MaterialStateColor.resolveWith((states) => Colors.white),
-       backgroundColor: MaterialStateColor.resolveWith((states) => Colors.orange),
-       overlayColor: MaterialStateColor.resolveWith((states) => Colors.deepOrange),
+       backgroundColor: MaterialStateColor.resolveWith((states) => Colors.deepPurpleAccent.withOpacity(0.8)),
+       overlayColor: MaterialStateColor.resolveWith((states) => Colors.transparent),
      ),
    ),
-    timePickerTheme: TimePickerThemeData(
-    backgroundColor: Colors.blueGrey,
-    hourMinuteShape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(8)),
-      side: BorderSide(color: Colors.orange, width: 4),
-    ),
-    dayPeriodBorderSide: const BorderSide(color: Colors.orange, width: 4),
-    dayPeriodColor: Colors.blueGrey.shade600,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(8)),
-      side: BorderSide(color: Colors.orange, width: 4),
-    ),
-    dayPeriodTextColor: Colors.white,
-    dayPeriodShape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(8)),
-      side: BorderSide(color: Colors.orange, width: 4),
-    ),
-    hourMinuteColor: MaterialStateColor.resolveWith((states) =>
-    states.contains(MaterialState.selected) ? Colors.orange : Colors.blueGrey.shade800),
-    hourMinuteTextColor: MaterialStateColor.resolveWith(
-            (states) => states.contains(MaterialState.selected) ? Colors.white : Colors.orange),
-    dialHandColor: Colors.blueGrey.shade700,
-    dialBackgroundColor: Colors.blueGrey.shade800,
-    hourMinuteTextStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-    dayPeriodTextStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-    helpTextStyle:
-    const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white),
-    inputDecorationTheme: const InputDecorationTheme(
-      border: InputBorder.none,
-      contentPadding: EdgeInsets.all(0),
-    ),
-    dialTextColor: MaterialStateColor.resolveWith(
-            (states) => states.contains(MaterialState.selected) ? Colors.orange : Colors.white),
-    entryModeIconColor: Colors.orange,
-  ),
     brightness: Brightness.light,
       appBarTheme: AppBarTheme(
 
@@ -78,46 +43,11 @@ class Hmode{
 
   );
   static ThemeData darkTheme = ThemeData(
-    timePickerTheme: TimePickerThemeData(
-      backgroundColor: Colors.blueGrey,
-      hourMinuteShape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(8)),
-        side: BorderSide(color: Colors.orange, width: 4),
-      ),
-      dayPeriodBorderSide: const BorderSide(color: Colors.orange, width: 4),
-      dayPeriodColor: Colors.blueGrey.shade600,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(8)),
-        side: BorderSide(color: Colors.orange, width: 4),
-      ),
-      dayPeriodTextColor: Colors.white,
-      dayPeriodShape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(8)),
-        side: BorderSide(color: Colors.orange, width: 4),
-      ),
-      hourMinuteColor: MaterialStateColor.resolveWith((states) =>
-      states.contains(MaterialState.selected) ? Colors.orange : Colors.blueGrey.shade800),
-      hourMinuteTextColor: MaterialStateColor.resolveWith(
-              (states) => states.contains(MaterialState.selected) ? Colors.white : Colors.orange),
-      dialHandColor: Colors.blueGrey.shade700,
-      dialBackgroundColor: Colors.blueGrey.shade800,
-      hourMinuteTextStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-      dayPeriodTextStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-      helpTextStyle:
-      const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white),
-      inputDecorationTheme: const InputDecorationTheme(
-        border: InputBorder.none,
-        contentPadding: EdgeInsets.all(0),
-      ),
-      dialTextColor: MaterialStateColor.resolveWith(
-              (states) => states.contains(MaterialState.selected) ? Colors.orange : Colors.white),
-      entryModeIconColor: Colors.orange,
-    ),
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
           foregroundColor: MaterialStateColor.resolveWith((states) => Colors.white),
-          backgroundColor: MaterialStateColor.resolveWith((states) => Colors.orange),
-          overlayColor: MaterialStateColor.resolveWith((states) => Colors.deepOrange),
+          backgroundColor: MaterialStateColor.resolveWith((states) => Colors.deepPurpleAccent.withOpacity(0.8)),
+          overlayColor: MaterialStateColor.resolveWith((states) => Colors.transparent),
         ),
       ),
       brightness: Brightness.dark,

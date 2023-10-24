@@ -78,7 +78,7 @@ class _emprl2State extends State<emprl2> {
                   final String sall = salle.text;
                   final String typ = type.text;
                   if(cour!=null&&dat!=null&&pro!=null&&sall!=null&&typ!=null){
-                    await _cour.add({"cours":cour,"date":dat,"prof":pro,"salle":sall,"type":typ});
+                    await _cour.add({"cours":cour,"date":dat,"prof":pro,"salle":sall,"type":typ,"time":Timestamp.now()});
                     cours.text="";
                     date.text="";
                     prof.text="";
@@ -135,7 +135,7 @@ class _emprl2State extends State<emprl2> {
                   final String sall = salle.text;
                   final String typ = type.text;
                   if(cour!=null&&dat!=null&&pro!=null&&sall!=null&&typ!=null){
-                    await _mardi.add({"cours":cour,"date":dat,"prof":pro,"salle":sall,"type":typ});
+                    await _mardi.add({"cours":cour,"date":dat,"prof":pro,"salle":sall,"type":typ,"time":Timestamp.now()});
                     cours.text="";
                     date.text="";
                     prof.text="";
@@ -192,7 +192,7 @@ class _emprl2State extends State<emprl2> {
                   final String sall = salle.text;
                   final String typ = type.text;
                   if(cour!=null&&dat!=null&&pro!=null&&sall!=null&&typ!=null){
-                    await _mercredi.add({"cours":cour,"date":dat,"prof":pro,"salle":sall,"type":typ});
+                    await _mercredi.add({"cours":cour,"date":dat,"prof":pro,"salle":sall,"type":typ,"time":Timestamp.now()});
                     cours.text="";
                     date.text="";
                     prof.text="";
@@ -249,7 +249,7 @@ class _emprl2State extends State<emprl2> {
                   final String sall = salle.text;
                   final String typ = type.text;
                   if(cour!=null&&dat!=null&&pro!=null&&sall!=null&&typ!=null){
-                    await _jeudi.add({"cours":cour,"date":dat,"prof":pro,"salle":sall,"type":typ});
+                    await _jeudi.add({"cours":cour,"date":dat,"prof":pro,"salle":sall,"type":typ,"time":Timestamp.now()});
                     cours.text="";
                     date.text="";
                     prof.text="";
@@ -306,7 +306,7 @@ class _emprl2State extends State<emprl2> {
                   final String sall = salle.text;
                   final String typ = type.text;
                   if(cour!=null&&dat!=null&&pro!=null&&sall!=null&&typ!=null){
-                    await _vendredi.add({"cours":cour,"date":dat,"prof":pro,"salle":sall,"type":typ});
+                    await _vendredi.add({"cours":cour,"date":dat,"prof":pro,"salle":sall,"type":typ,"time":Timestamp.now()});
                     cours.text="";
                     date.text="";
                     prof.text="";
@@ -363,7 +363,7 @@ class _emprl2State extends State<emprl2> {
                   final String sall = salle.text;
                   final String typ = type.text;
                   if(cour!=null&&dat!=null&&pro!=null&&sall!=null&&typ!=null){
-                    await _samedi.add({"cours":cour,"date":dat,"prof":pro,"salle":sall,"type":typ});
+                    await _samedi.add({"cours":cour,"date":dat,"prof":pro,"salle":sall,"type":typ,"time":Timestamp.now()});
                     cours.text="";
                     date.text="";
                     prof.text="";
@@ -836,7 +836,7 @@ class _emprl2State extends State<emprl2> {
                     SizedBox(height: 10,),
                     Container(
                       //color: Colors.red,
-                      child: StreamBuilder(stream: _cour.orderBy("cours",descending: false).snapshots(), builder: (context,AsyncSnapshot<QuerySnapshot> streamsnapshot){
+                      child: StreamBuilder(stream: _cour.orderBy("time",descending: false).snapshots(), builder: (context,AsyncSnapshot<QuerySnapshot> streamsnapshot){
                         if(streamsnapshot.hasData){
                           return ListView.builder(
                               shrinkWrap: true,
@@ -927,7 +927,7 @@ class _emprl2State extends State<emprl2> {
                     SizedBox(height: 10,),
                     Container(
                       //color: Colors.red,
-                      child: StreamBuilder(stream: _mardi.orderBy("cours",descending: false).snapshots(), builder: (context,AsyncSnapshot<QuerySnapshot> streamsnapshot){
+                      child: StreamBuilder(stream: _mardi.orderBy("time",descending: false).snapshots(), builder: (context,AsyncSnapshot<QuerySnapshot> streamsnapshot){
                         if(streamsnapshot.hasData){
                           return ListView.builder(
                               shrinkWrap: true,
@@ -1018,7 +1018,7 @@ class _emprl2State extends State<emprl2> {
                     SizedBox(height: 10,),
                     Container(
                       //color: Colors.red,
-                      child: StreamBuilder(stream: _mercredi.orderBy("cours",descending: false).snapshots(), builder: (context,AsyncSnapshot<QuerySnapshot> streamsnapshot){
+                      child: StreamBuilder(stream: _mercredi.orderBy("time",descending: false).snapshots(), builder: (context,AsyncSnapshot<QuerySnapshot> streamsnapshot){
                         if(streamsnapshot.hasData){
                           return ListView.builder(
                               shrinkWrap: true,
@@ -1109,7 +1109,7 @@ class _emprl2State extends State<emprl2> {
                     SizedBox(height: 10,),
                     Container(
                       //color: Colors.red,
-                      child: StreamBuilder(stream: _jeudi.orderBy("cours",descending: false).snapshots(), builder: (context,AsyncSnapshot<QuerySnapshot> streamsnapshot){
+                      child: StreamBuilder(stream: _jeudi.orderBy("time",descending: false).snapshots(), builder: (context,AsyncSnapshot<QuerySnapshot> streamsnapshot){
                         if(streamsnapshot.hasData){
                           return ListView.builder(
                               shrinkWrap: true,
@@ -1200,7 +1200,7 @@ class _emprl2State extends State<emprl2> {
                     SizedBox(height: 10,),
                     Container(
                       //color: Colors.red,
-                      child: StreamBuilder(stream: _vendredi.orderBy("cours",descending: false).snapshots(), builder: (context,AsyncSnapshot<QuerySnapshot> streamsnapshot){
+                      child: StreamBuilder(stream: _vendredi.orderBy("time",descending: false).snapshots(), builder: (context,AsyncSnapshot<QuerySnapshot> streamsnapshot){
                         if(streamsnapshot.hasData){
                           return ListView.builder(
                               shrinkWrap: true,
@@ -1291,7 +1291,7 @@ class _emprl2State extends State<emprl2> {
                     SizedBox(height: 10,),
                     Container(
                       //color: Colors.red,
-                      child: StreamBuilder(stream: _samedi.orderBy("cours",descending: false).snapshots(), builder: (context,AsyncSnapshot<QuerySnapshot> streamsnapshot){
+                      child: StreamBuilder(stream: _samedi.orderBy("time",descending: false).snapshots(), builder: (context,AsyncSnapshot<QuerySnapshot> streamsnapshot){
                         if(streamsnapshot.hasData){
                           return ListView.builder(
                               shrinkWrap: true,

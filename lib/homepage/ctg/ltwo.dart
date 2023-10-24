@@ -238,7 +238,7 @@ class _EaState extends State<Ea> {
                                         color: Get.isDarkMode?Colors.deepOrangeAccent:Colors.deepPurpleAccent[200],
                                       ),
                                       SizedBox(height: 10,),
-                                      Text("Seule le délégué a l'accès pour cette page",
+                                      Text("Seule le délégué de L3  a l'accès pour cette page",
                                         style:TextStyle(
                                           color: Get.isDarkMode?Colors.grey[300]:Colors.grey[600],
                                           fontSize: 16,

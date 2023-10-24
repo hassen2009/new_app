@@ -12,7 +12,6 @@ import '../empl/services.dart';
 import '../barpages/rattrapage.dart';
 import '../barpages/emploi.dart';
 import 'header_page.dart';
-import 'package:new_app/homepage/SearchSection.dart';
 import 'CatagorySection.dart';
 class HomePge extends StatefulWidget {
   const HomePge({Key? key}) : super(key: key);
@@ -20,7 +19,9 @@ class HomePge extends StatefulWidget {
   @override
   State<HomePge> createState() => _HomePgeState();
 }
-
+Future<void> _refresh(){
+  return Future.delayed(Duration(seconds: 3));
+}
 class _HomePgeState extends State<HomePge> {
   var notifyHelper;
   @override
@@ -70,22 +71,33 @@ class _HomePgeState extends State<HomePge> {
       drawer: const MyDrawer(),
       body:
       [
-      SingleChildScrollView(
-      child: Stack(
-      children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          HeaderSection(),
+      Padding(
+        padding: const EdgeInsets.only(top: 8.0),
+        child: RefreshIndicator(
+          backgroundColor: Get.isDarkMode?Colors.black:Colors.white,
+          color: Colors.blue,
+          onRefresh: () async{
+            await _refresh();
+          },
+          child: SingleChildScrollView(
+          child:  Stack(
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                HeaderSection(),
     Container(height: 4,color: Get.isDarkMode?Colors.grey[900]:Colors.grey[300],),
     stry(),
-          Container(height: 4,color: Get.isDarkMode?Colors.grey[900]:Colors.grey[300],),
+                Container(height: 4,color: Get.isDarkMode?Colors.grey[900]:Colors.grey[300],),
     CatagorySection(),
     ],
     ),
     ],
-    )),
+    ),
+          ),
+        ),
+      ),
         emploi(),
         conference(),
       ][_currentIndex],
@@ -133,7 +145,7 @@ class _HomePgeState extends State<HomePge> {
                   ),
                 ),
                 BottomNavigationBarItem(
-                  label: "A rattraper",
+                  label: "Outils",
                   icon: Container(
                     margin: const EdgeInsets.all(5),
                     padding: const EdgeInsets.all(5),
@@ -143,7 +155,7 @@ class _HomePgeState extends State<HomePge> {
                     ),
                     child:  Icon(
                       _currentIndex==2?
-                      Icons.assignment:Icons.assignment_outlined,
+                      Icons.featured_play_list_rounded:Icons.featured_play_list_outlined,
                       size: 25,
                     ),
                   ),

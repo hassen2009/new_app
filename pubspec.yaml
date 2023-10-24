@@ -47,10 +47,10 @@ dependencies:
   open_file: ^3.3.2
   cached_network_image:
   timezone:
-  flutter_timezone: ^1.0.7
   flutter_rounded_date_picker: ^3.0.2
   date_field: ^3.0.5
   date_picker_timeline:
+  flutter_timezone:
   google_fonts:
   percent_indicator:
   story_view:
@@ -59,9 +59,10 @@ dependencies:
   path_provider:
   image_picker:
   provider:
-  firebase_app_check: ^0.2.0+1
+  firebase_app_check:
   connectivity:
   url_launcher:
+  youtube_player_flutter:
   flutter_local_notifications:
   flutter_staggered_animations:
   flutter_launcher_icons: ^0.13.1

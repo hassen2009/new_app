@@ -7,56 +7,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:443018308784:android:a2901f3a89aa1940691f75",
-        "android_client_info": {
-          "package_name": "Unvapp.mr.unv_app"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "443018308784-8o0uqfaonbg43ifs53u1mc78u5c5id83.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDcH3rHh4Hi2zNheVuPvn7LIBSPcN9ehtU"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "443018308784-8o0uqfaonbg43ifs53u1mc78u5c5id83.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "443018308784-iki640ki4dgu51enf3vlealfhbndbj5c.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "Unvapp.mr.unvApp"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:443018308784:android:3e3469878d99ab56691f75",
         "android_client_info": {
           "package_name": "new_app.example.new_app"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "443018308784-0lc6ghlos2uh0b515bi58n7omue2u71l.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "new_app.example.new_app",
-            "certificate_hash": "03643b7b9ce75a3a9f29b4efaa92a7b3c17f7fdc"
-          }
-        },
         {
           "client_id": "443018308784-8o0uqfaonbg43ifs53u1mc78u5c5id83.apps.googleusercontent.com",
           "client_type": 3

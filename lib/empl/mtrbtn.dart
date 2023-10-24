@@ -5,12 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:new_app/base/taskcontroller.dart';
 import 'package:new_app/empl/empl1.dart';
-import 'package:new_app/homepage/home_page.dart';
-import 'package:new_app/homepage/pages.dart';
 import 'package:new_app/empl/inputfields.dart';
-import 'package:new_app/barpages/emploi.dart';
+import 'package:new_app/homepage/models/notifications.dart';
 import '../base/task.dart';
-import '../barpages/themess.dart';
+
 
 
 
@@ -235,18 +233,18 @@ class _mbuttonState extends State<mbutton> {
   }
   _gettime({required bool isDebut}) async {
     var pickedtime = await _showTimePicker();
-    String _formatedTime = pickedtime.format(context);
+    String formatedTime = pickedtime.format(context);
     if(pickedtime==null){
       print("time canceled");
     }
     else if (isDebut==true){
       setState(() {
-        _Debut = _formatedTime;
+        _Debut = formatedTime;
       });
     }
     else if(isDebut==false){
       setState(() {
-        _fin = _formatedTime;
+        _fin = formatedTime;
       });
     }
   }
@@ -254,10 +252,11 @@ class _mbuttonState extends State<mbutton> {
   return showTimePicker(
     initialEntryMode: TimePickerEntryMode.input,
     context : context,
-    initialTime : TimeOfDay(
-        hour: int.parse(_Debut.split(":")[0]),
-        minute: int.parse(_Debut.split(":")[1].split(" ")[0])
-    ),
+    initialTime : TimeOfDay( hour: int.parse(_Debut.split(":")[0]),
+      minute: int.parse(_Debut.split(":")[1].split(" ")[0]),),
+    builder: (context , child){
+      return MediaQuery(data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true), child: child ?? Container());
+    }
   );
     }
     _colorpalette(){

@@ -1,16 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:date_field/date_field.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:new_app/empl/empl1.dart';
-import 'package:new_app/empl/mtrbtn.dart';
-import 'package:new_app/homepage/ctg/lone.dart';
-import 'package:new_app/homepage/home_page.dart';
 
 import '../../empl/imput2.dart';
 class dteea extends StatefulWidget {

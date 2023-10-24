@@ -56,13 +56,16 @@ class _phototopdfState extends State<phototopdf> {
     );
   }
    _getimage() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-    x=File(pickedFile!.path);
-   ColorFiltered y= ColorFiltered(colorFilter: ColorFilter.matrix(scan),child: Image.file(File(x!.path)),);
+    final pickedFile = await picker.pickMultiImage(
+
+    );
+    List<XFile> xfilePick = pickedFile;
+
     setState(() {
-      if (pickedFile != null) {
-      _image.add(x!);
-      filter.add(y);
+      if (xfilePick.isNotEmpty) {
+        for(var i =0;i<xfilePick.length;i++){
+          _image.add(File(xfilePick[i].path));
+        }
       }
       else {
         print("no image");

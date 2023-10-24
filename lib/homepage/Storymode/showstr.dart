@@ -27,7 +27,6 @@ class _showstoryState extends State<showstory> {
   final stroyController = StoryController();
   @override
   Widget build(BuildContext context) {
-    int j=0;
     return Scaffold(
       body: SafeArea(
         child: Stack(

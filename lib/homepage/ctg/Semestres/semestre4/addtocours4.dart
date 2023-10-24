@@ -41,7 +41,7 @@ class _addtocours4State extends State<addtocours4> {
      String fileName = pickedFile.files[0].name;
     File file = File(pickedFile.files[0].path!);
      final downloadLink = await uploadPdf(fileName, file);
-    await   _firebaseFirestore.collection("pdfs").add({
+    await   _firebaseFirestore.collection("pdfs").doc(fileName).set({
        "name" : fileName,
        "url": downloadLink
      });
@@ -110,6 +110,9 @@ class _addtocours4State extends State<addtocours4> {
         return Padding(
             padding:EdgeInsets.all(20),
           child: InkWell(
+            onLongPress: ()async{
+              await _firebaseFirestore.collection('pdfs').doc(pdfData[index]["name"]).delete();
+            },
             onTap: (){
               Get.to(()=> pdfviewer(PdfUrl: pdfData[index]["url"],));
             },

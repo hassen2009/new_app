@@ -10,6 +10,7 @@ import 'package:new_app/homepage/ctg/Semestres/semestre4/pdfviewer.dart';
 import '../../../home_page.dart';
 class addtocours5 extends StatefulWidget {
   const addtocours5({Key? key}) : super(key: key);
+
   @override
   State<addtocours5> createState() => _addtocours5State();
 }
@@ -41,7 +42,7 @@ class _addtocours5State extends State<addtocours5> {
       String fileName = pickedFile.files[0].name;
       File file = File(pickedFile.files[0].path!);
       final downloadLink = await uploadPdf(fileName, file);
-      await   _firebaseFirestore.collection("pdfss5").add({
+      await   _firebaseFirestore.collection("pdfss5").doc(fileName).set({
         "name" : fileName,
         "url": downloadLink
       });
@@ -56,6 +57,7 @@ class _addtocours5State extends State<addtocours5> {
 
     });
   }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -63,8 +65,10 @@ class _addtocours5State extends State<addtocours5> {
     _checkrole();
     getAllPdf();
   }
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         actions: [Container(
@@ -107,9 +111,13 @@ class _addtocours5State extends State<addtocours5> {
           itemCount: pdfData.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
           itemBuilder: (context, index){
+           
             return Padding(
               padding:EdgeInsets.all(20),
               child: InkWell(
+                onLongPress: ()async{
+                  await _firebaseFirestore.collection('pdfss5').doc(pdfData[index]["name"]).delete();
+                },
                 onTap: (){
                   Get.to(()=> pdfviewer(PdfUrl: pdfData[index]["url"],));
                 },

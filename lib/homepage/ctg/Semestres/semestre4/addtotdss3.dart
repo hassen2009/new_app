@@ -42,7 +42,7 @@ class _addtotds3State extends State<addtotds3> {
       String fileName = pickedFile.files[0].name;
       File file = File(pickedFile.files[0].path!);
       final downloadLink = await uploadPdf(fileName, file);
-      await   _firebaseFirestore.collection("pdfstds3").add({
+      await   _firebaseFirestore.collection("pdfstds3").doc(fileName).set({
         "name" : fileName,
         "url": downloadLink
       });
@@ -114,8 +114,8 @@ class _addtotds3State extends State<addtotds3> {
             return Padding(
               padding:EdgeInsets.all(20),
               child: InkWell(
-                onLongPress: (){
-
+                onLongPress: ()async{
+                  await _firebaseFirestore.collection('pdfstds3').doc(pdfData[index]["name"]).delete();
                 },
                 onTap: (){
                   Get.to(()=> pdfviewer(PdfUrl: pdfData[index]["url"],));

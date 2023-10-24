@@ -30,15 +30,12 @@ class _emploiState extends State<emploi> {
   int i=1;
 
   final _taskController = Get.put(TaskController());
-  var notifyHelper;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    notifyHelper=NotifyHelper();
-    notifyHelper.initializeNotification();
-    notifyHelper.requestIOSPermissions();
     _checktypel();
+
   }
   String typel = "L2";
   _checktypel()async{
@@ -88,7 +85,7 @@ class _emploiState extends State<emploi> {
                if(task.repeat=='Chaque jour'){
                  DateTime date = DateFormat.jm().parse(task.debut.toString());
                  var myTime = DateFormat("HH:mm").format(date);
-                 notifyHelper.scheduledNotification(
+                 NotifyHelper().shedulNot(
                    int.parse(myTime.toString().split(":")[0]),
                    int.parse(myTime.toString().split(":")[1]),
                    task
@@ -115,7 +112,7 @@ class _emploiState extends State<emploi> {
                if(task.repeat=='Chaque semaine'&&task.date==DateFormat.yMd().format(_selectedDate.subtract(Duration(days:i)))){
                  DateTime date = DateFormat.jm().parse(task.debut.toString());
                  var myTime = DateFormat("HH:mm").format(date);
-                 notifyHelper.scheduledNotification(
+                 NotifyHelper().shedulNot(
                      int.parse(myTime.toString().split(":")[0]),
                      int.parse(myTime.toString().split(":")[1]),
                      task
@@ -142,7 +139,7 @@ class _emploiState extends State<emploi> {
                if(task.date==DateFormat.yMd().format(_selectedDate)){
                  DateTime date = DateFormat.jm().parse(task.debut.toString());
                  var myTime = DateFormat("HH:mm").format(date);
-                 notifyHelper.scheduledNotification(
+                 NotifyHelper().shedulNot(
                      int.parse(myTime.toString().split(":")[0]),
                      int.parse(myTime.toString().split(":")[1]),
                      task
